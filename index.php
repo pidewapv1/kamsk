@@ -86,21 +86,21 @@ use Goutte\Client;
 $client = new Client();
 $crawler = $client->request('GET', 'https://wap4.co');
 $form = $crawler->selectButton('Login')->form();
-if($_GET['user'] == 'ytmp3'){
-$crawler = $client->submit($form, array('email' => 'satriamusic.com@gmail.com', 'pass' => '123pidewap321'));
-$link = $crawler->selectLink('ytmp3')->link();
+if($_GET['user'] == 'wblog'){
+$crawler = $client->submit($form, array('email' => 'laguganool@gmail.com', 'pass' => '123pidewap321'));
+$link = $crawler->selectLink('wblog')->link();
 }
-if($_GET['user'] == 'planetlagu6'){
-$crawler = $client->submit($form, array('email' => 'satriamusic.com@gmail.com', 'pass' => '123pidewap321'));
-$link = $crawler->selectLink('planetlagu6')->link();
+if($_GET['user'] == 'belagu'){
+$crawler = $client->submit($form, array('email' => 'laguganool@gmail.com', 'pass' => '123pidewap321'));
+$link = $crawler->selectLink('belagu')->link();
 }
-if($_GET['user'] == 'downloadlagu123'){
-$crawler = $client->submit($form, array('email' => 'satriamusic.com@gmail.com', 'pass' => '123pidewap321'));
-$link = $crawler->selectLink('downloadlagu123')->link();
+if($_GET['user'] == 'harianzlagu'){
+$crawler = $client->submit($form, array('email' => 'laguganool@gmail.com', 'pass' => '123pidewap321'));
+$link = $crawler->selectLink('harianzlagu')->link();
 }
-if($_GET['user'] == 'wapku'){
-$crawler = $client->submit($form, array('email' => 'satriamusic.com@gmail.com', 'pass' => '123pidewap321'));
-$link = $crawler->selectLink('wapku')->link();
+if($_GET['user'] == 'planetlagu'){
+$crawler = $client->submit($form, array('email' => 'laguganool@gmail.com', 'pass' => '123pidewap321'));
+$link = $crawler->selectLink('planetlagu')->link();
 }
 $crawler = $client->click($link);
 $link = $crawler->selectLink('Custom data')->link();
