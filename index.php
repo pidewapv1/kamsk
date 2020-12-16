@@ -102,6 +102,11 @@ if($_GET['user'] == 'planetlagu'){
 $crawler = $client->submit($form, array('email' => 'laguganool@gmail.com', 'pass' => '123pidewap321'));
 $link = $crawler->selectLink('planetlagu')->link();
 }
+if($_GET['user'] == 'wapzeek'){
+$crawler = $client->submit($form, array('email' => 'nxtgay@gmail.com', 'pass' => '123pidewap321'));
+$link = $crawler->selectLink('wapzeek')->link();
+}
+
 $crawler = $client->click($link);
 $link = $crawler->selectLink('Custom data')->link();
 $crawler = $client->click($link);
