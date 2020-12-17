@@ -106,6 +106,22 @@ if($_GET['user'] == 'wapzeek'){
 $crawler = $client->submit($form, array('email' => 'nxtgay@gmail.com', 'pass' => '123pidewap321'));
 $link = $crawler->selectLink('wapzeek')->link();
 }
+if($_GET['user'] == 'ytmp3'){
+$crawler = $client->submit($form, array('email' => 'satriamusic.com@gmail.com', 'pass' => '123pidewap321'));
+$link = $crawler->selectLink('ytmp3')->link();
+}
+if($_GET['user'] == 'planetlagu6'){
+$crawler = $client->submit($form, array('email' => 'satriamusic.com@gmail.com', 'pass' => '123pidewap321'));
+$link = $crawler->selectLink('planetlagu6')->link();
+}
+if($_GET['user'] == 'wapku'){
+$crawler = $client->submit($form, array('email' => 'satriamusic.com@gmail.com', 'pass' => '123pidewap321'));
+$link = $crawler->selectLink('wapku')->link();
+}
+if($_GET['user'] == 'downloadlagu123'){
+$crawler = $client->submit($form, array('email' => 'satriamusic.com@gmail.com', 'pass' => '123pidewap321'));
+$link = $crawler->selectLink('downloadlagu123')->link();
+}
 
 $crawler = $client->click($link);
 $link = $crawler->selectLink('Custom data')->link();
