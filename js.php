@@ -20,8 +20,7 @@ header('Content-Type: application/javascript');
         curl_close($ch);    // Closing cURL
         return $data;   // Returning the data from the function
     }
-?>
-  <?php
+
     // Defining the basic scraping function
     function scrape_between($data, $start, $end){
         $data = stristr($data, $start); // Stripping all data from before $start
@@ -42,8 +41,7 @@ function post_slug($str)
   return strtolower(preg_replace(array('/[^a-zA-Z0-9 -]/', '/[ ]+/', '/^-|-$/'),
   array('', '-', ''), remove_accent($str)));
 }
-?>
-<?php
+
     $scraped_page = curl('https://www.youtube.com/results?search_query='.post_slug($_GET['q']).'');
     $results_page = scrape_between($scraped_page, "var ytInitialData =",";</script>"); // Scraping out only the middle section of the results page that contains our results
    //echo $results_page;
@@ -64,7 +62,7 @@ $listing = $json['contents']['twoColumnSearchResultsRenderer']['primaryContents'
         $data = [];
 
       foreach ($listing as $dataz) {
-                  if(isset($dataz['videoRenderer']['videoId'])){
+                  if(isset($dataz['videoRenderer']['videoId'])){  
                   $newstr = preg_replace('/[^a-zA-Z0-9]/', ' ', $dataz['videoRenderer']['title']['runs'][0]['text']);
             @$data[$k]['id'] .= $dataz['videoRenderer']['videoId'];
             @$data[$k]['title'] .= ucwords($newstr);
@@ -72,56 +70,58 @@ $listing = $json['contents']['twoColumnSearchResultsRenderer']['primaryContents'
             }  }
 
             $kk= json_encode($data, JSON_UNESCAPED_UNICODE);
- $kkll = str_replace('},{', '} @ {', $kk);
- $kklll = str_replace('[', '', $kkll);
- $kkl = str_replace(']', ' @ ', $kklll);
+            $kkll = str_replace('},{', '} @ {', $kk);
+            $kklll = str_replace('[', '', $kkll);
+            $kkl = str_replace(']', ' @ ', $kklll);
 
 
-?>
 
-
-<?php
 
 require 'vendor/autoload.php';
 use Goutte\Client;
 $client = new Client();
 $crawler = $client->request('GET', 'https://wap4.co');
 $form = $crawler->selectButton('Login')->form();
-if($_GET['user'] == 'wblog'){
-$crawler = $client->submit($form, array('email' => 'laguganool@gmail.com', 'pass' => '123pidewap321'));
-$link = $crawler->selectLink('wblog')->link();
-}
-if($_GET['user'] == 'belagu'){
+
+$favcolor = $_GET['user'];
+switch ($favcolor) {
+  case 'wblog':
+    $crawler = $client->submit($form, array('email' => 'laguganool@gmail.com', 'pass' => '123pidewap321'));
+    $link = $crawler->selectLink('wblog')->link();
+    break;
+
+case 'belagu';
 $crawler = $client->submit($form, array('email' => 'laguganool@gmail.com', 'pass' => '123pidewap321'));
 $link = $crawler->selectLink('belagu')->link();
-}
-if($_GET['user'] == 'harianzlagu'){
+       break;
+case 'harianzlagu';
 $crawler = $client->submit($form, array('email' => 'laguganool@gmail.com', 'pass' => '123pidewap321'));
 $link = $crawler->selectLink('harianzlagu')->link();
-}
-if($_GET['user'] == 'planetlagu'){
+          break;
+case 'planetlagu';
 $crawler = $client->submit($form, array('email' => 'laguganool@gmail.com', 'pass' => '123pidewap321'));
 $link = $crawler->selectLink('planetlagu')->link();
-}
-if($_GET['user'] == 'wapzeek'){
+       break;
+case 'wapzeek';
 $crawler = $client->submit($form, array('email' => 'nxtgay@gmail.com', 'pass' => '123pidewap321'));
 $link = $crawler->selectLink('wapzeek')->link();
-}
-if($_GET['user'] == 'ytmp3'){
+       break;
+case 'ytmp3';
 $crawler = $client->submit($form, array('email' => 'satriamusic.com@gmail.com', 'pass' => '123pidewap321'));
 $link = $crawler->selectLink('ytmp3')->link();
-}
-if($_GET['user'] == 'planetlagu6'){
+        break;
+case 'planetlagu6';
 $crawler = $client->submit($form, array('email' => 'satriamusic.com@gmail.com', 'pass' => '123pidewap321'));
 $link = $crawler->selectLink('planetlagu6')->link();
-}
-if($_GET['user'] == 'wapku'){
+       break;
+case 'wapku';
 $crawler = $client->submit($form, array('email' => 'satriamusic.com@gmail.com', 'pass' => '123pidewap321'));
 $link = $crawler->selectLink('wapku')->link();
-}
-if($_GET['user'] == 'downloadlagu123'){
+        break;
+case 'downloadlagu123';
 $crawler = $client->submit($form, array('email' => 'satriamusic.com@gmail.com', 'pass' => '123pidewap321'));
 $link = $crawler->selectLink('downloadlagu123')->link();
+
 }
 
 $crawler = $client->click($link);
@@ -134,6 +134,6 @@ $crawler = $client->submit($form, array('key' => post_slug($_GET['q']), 'data' =
 $crawler->filter('.link-list')->each(function ($node) {
     if ($node->text() == 'Remove entry') {
     echo "document.getElementById('container').innerHTML = 'Found 20 List, please wait redirecting....'";
-    }
+    exit();}
 });
        ?>
